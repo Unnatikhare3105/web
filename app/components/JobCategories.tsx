@@ -1,3 +1,5 @@
+//app/components/JobCategories.tsx
+
 import {
     Car,
     GraduationCap,

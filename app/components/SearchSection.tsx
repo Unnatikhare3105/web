@@ -1,3 +1,5 @@
+//app/components/SearchSection.tsx
+
 const SearchSection = () => {
     return (
 
@@ -5,12 +7,7 @@ const SearchSection = () => {
 
             {/* Search Box */}
             <div
-                className="
-        bg-white
-        flex
-        flex-col
-        sm:flex-row
-        items-stretch
+                className="h-full w-full bg-white flex flex-col sm:flex-row items-stretch
         sm:items-center
         overflow-hidden
         shadow-xl
@@ -24,8 +21,12 @@ const SearchSection = () => {
                     className="
           flex-1
           h-14
+          
+
+
           sm:h-16
-          px-5
+          p-2
+
           sm:px-8
           lg:px-12
           outline-none
@@ -42,9 +43,9 @@ const SearchSection = () => {
           flex-1
           h-14
           sm:h-16
-          px-5
-          sm:px-8
-          lg:px-12
+          p-2
+          sm:p-5
+          lg:p-8
           outline-none
           text-gray-500
           border-b
@@ -63,7 +64,7 @@ const SearchSection = () => {
           flex
           items-center
           flex-1
-          px-5
+          p-2
           sm:px-8
           lg:px-12
           border-b

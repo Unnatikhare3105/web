@@ -1,3 +1,5 @@
+//app/components/HeroSection.tsx
+
 import SearchSection from "./SearchSection"
 
 const HeroSection = () => {
