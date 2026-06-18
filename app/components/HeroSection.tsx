@@ -23,7 +23,7 @@ const HeroSection = () => {
             >
 
                 <h1
-                    className="mt-28 sm:mt-20 lg:mt-16 text-white text-3xl sm:text-5xl lg:text-7xl font-bold text-center leading-tight"
+                    className="mt-28 sm:mt-20 lg:mt-16 text-white text-5xl sm:text-5xl lg:text-7xl font-bold text-center leading-tight"
                 >
                     FIND THE JOB THAT
                     <br />
@@ -31,7 +31,7 @@ const HeroSection = () => {
                 </h1>
 
                 <p className="text-white mt-4 sm:mt-6 text-base sm:text-lg lg:text-xl">
-                    Connecting outstanding people with innovative companies.
+                    Connecting outstanding people with the world’s most innovative companies.
                 </p>
 
                 <SearchSection />

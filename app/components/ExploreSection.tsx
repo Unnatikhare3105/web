@@ -76,7 +76,7 @@ export default function ExploreSection() {
         <section className="bg-[#f7f7f7] px-5 py-14 md:py-16">
             {/* Header */}
             <div className="text-center mb-10">
-                <h2 className="text-9xl md:text-3xl  font-bold text-[#222] tracking-widest uppercase mb-2">
+                <h2 className="text-6xl md:text-3xl  font-bold text-[#222] tracking-widest uppercase mb-2">
                     Explore Jobs
                 </h2>
                 <p className="text-sm text-gray-400">
