@@ -1,16 +1,18 @@
 const SearchSection = () => {
     return (
 
-        <div className="mt-16">
+        <div className="mt-10 sm:mt-16 w-full max-w-4xl px-4 sm:px-0">
 
             {/* Search Box */}
             <div
                 className="
         bg-white
         flex
-        items-center
+        flex-col
+        sm:flex-row
+        items-stretch
+        sm:items-center
         overflow-hidden
-        h-16
         shadow-xl
         "
             >
@@ -21,11 +23,16 @@ const SearchSection = () => {
                     placeholder="Keywords or Title"
                     className="
           flex-1
-          h-full
-          px-28
+          h-14
+          sm:h-16
+          px-5
+          sm:px-8
+          lg:px-12
           outline-none
           text-gray-700
-          border-r
+          border-b
+          sm:border-b-0
+          sm:border-r
           "
                 />
 
@@ -33,11 +40,16 @@ const SearchSection = () => {
                 <select
                     className="
           flex-1
-          h-full
-          px-28
+          h-14
+          sm:h-16
+          px-5
+          sm:px-8
+          lg:px-12
           outline-none
           text-gray-500
-          border-r
+          border-b
+          sm:border-b-0
+          sm:border-r
           "
                 >
                     <option>Categories</option>
@@ -51,9 +63,14 @@ const SearchSection = () => {
           flex
           items-center
           flex-1
-          px-28
-          border-r
-          h-full
+          px-5
+          sm:px-8
+          lg:px-12
+          border-b
+          sm:border-b-0
+          sm:border-r
+          h-14
+          sm:h-16
           "
                 >
                     <input
@@ -71,8 +88,10 @@ const SearchSection = () => {
                 <button
                     className="
           bg-[#d6c313]
-          h-full
-          px-16
+          h-14
+          sm:h-16
+          px-8
+          sm:px-16
           text-black
           font-semibold
           hover:bg-[#c5b510]
@@ -85,12 +104,13 @@ const SearchSection = () => {
             </div>
 
             {/* Advanced Search */}
-            <div className="mt-5">
+            <div className="mt-5 text-center sm:text-left">
 
                 <button
                     className="
           text-white
-          text-lg
+          text-base
+          sm:text-lg
           hover:text-green-500
           "
                 >
@@ -101,7 +121,7 @@ const SearchSection = () => {
 
         </div>
 
-    )
+    )   
 }
 
 export default SearchSection

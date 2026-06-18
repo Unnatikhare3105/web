@@ -1,3 +1,4 @@
+//app/home-page/page.tsx
 import HeroSection from '../components/HeroSection'
 import Navbar from '../components/Navbar'
 

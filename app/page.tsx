@@ -1,3 +1,4 @@
+// app/page.tsx
 import HomePage from './home-page/page';
 import JobCategories from './components/JobCategories';
 import JobListingSection from './components/JobListingSection';
