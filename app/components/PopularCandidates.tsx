@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 const candidates = [
     {
@@ -69,28 +69,42 @@ const candidates = [
     }
 ]
 
-const CARDS_PER_PAGE = 4
-
 const PopularCandidates = () => {
-
     const [startIndex, setStartIndex] = useState(0)
+    const [cardsPerPage, setCardsPerPage] = useState(4)
+
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth < 640) {
+                setCardsPerPage(1)
+            } else if (window.innerWidth < 1024) {
+                setCardsPerPage(2)
+            } else {
+                setCardsPerPage(4)
+            }
+        }
+
+        handleResize()
+        window.addEventListener("resize", handleResize)
+        return () => window.removeEventListener("resize", handleResize)
+    }, [])
 
     const handleNext = () => {
-        if (startIndex + CARDS_PER_PAGE < candidates.length) {
-            setStartIndex(startIndex + CARDS_PER_PAGE)
+        if (startIndex + cardsPerPage < candidates.length) {
+            setStartIndex(startIndex + cardsPerPage)
         }
     }
 
     const handleBack = () => {
-        if (startIndex - CARDS_PER_PAGE >= 0) {
-            setStartIndex(startIndex - CARDS_PER_PAGE)
+        if (startIndex - cardsPerPage >= 0) {
+            setStartIndex(startIndex - cardsPerPage)
         }
     }
 
-    const visibleCandidates = candidates.slice(startIndex, startIndex + CARDS_PER_PAGE)
+    const visibleCandidates = candidates.slice(startIndex, startIndex + cardsPerPage)
 
     const canGoBack = startIndex > 0
-    const canGoNext = startIndex + CARDS_PER_PAGE < candidates.length
+    const canGoNext = startIndex + cardsPerPage < candidates.length
 
     return (
         <section className="relative py-20 sm:py-28 overflow-hidden bg-black/80">
@@ -120,7 +134,7 @@ const PopularCandidates = () => {
                 </div>
 
                 {/* Slider Row */}
-                <div className="flex items-center gap-4 sm:gap-8">
+                <div className="flex items-center gap-3 sm:gap-4 lg:gap-8">
 
                     {/* BACK */}
                     <button
@@ -128,10 +142,11 @@ const PopularCandidates = () => {
                         disabled={!canGoBack}
                         className={`
                             flex-shrink-0
-                            flex items-center gap-2
-                            text-white text-sm sm:text-base font-semibold
+                            flex items-center gap-1 sm:gap-2
+                            text-white text-xs sm:text-sm lg:text-base font-semibold
                             uppercase tracking-widest
                             transition-opacity duration-200
+                            whitespace-nowrap
                             ${canGoBack ? "opacity-100 hover:text-[#3faa00]" : "opacity-30 cursor-not-allowed"}
                         `}
                     >
@@ -139,7 +154,7 @@ const PopularCandidates = () => {
                     </button>
 
                     {/* Cards */}
-                    <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                         {visibleCandidates.map((candidate, index) => (
 
                             <div
@@ -148,9 +163,10 @@ const PopularCandidates = () => {
                             >
 
                                 {/* Photo */}
-                                <div className="flex justify-center pt-8 pb-4 px-4">
+                                <div className="flex justify-center pt-6 sm:pt-8 pb-3 sm:pb-4 px-4">
                                     <div className="
-                                        w-28 h-28
+                                        w-24 sm:w-28
+                                        h-24 sm:h-28
                                         rounded-full
                                         overflow-hidden
                                         ring-4
@@ -166,26 +182,26 @@ const PopularCandidates = () => {
                                 </div>
 
                                 {/* Info */}
-                                <div className="flex flex-col items-center px-4 pb-5 flex-1 text-center">
+                                <div className="flex flex-col items-center px-3 sm:px-4 pb-4 sm:pb-5 flex-1 text-center">
 
                                     {/* Name */}
-                                    <h3 className="text-lg font-bold text-gray-900">
+                                    <h3 className="text-base sm:text-lg font-bold text-gray-900">
                                         {candidate.name}
                                     </h3>
 
                                     {/* Role — green */}
-                                    <p className="text-[#3faa00] text-sm font-medium mt-1">
+                                    <p className="text-[#3faa00] text-xs sm:text-sm font-medium mt-1">
                                         {candidate.role}
                                     </p>
 
                                     {/* Location + Sector */}
-                                    <div className="mt-3 text-gray-400 text-xs space-y-1">
+                                    <div className="mt-2 sm:mt-3 text-gray-400 text-xs space-y-1">
                                         <p>Location: {candidate.location}</p>
                                         <p>Sector: {candidate.sector}</p>
                                     </div>
 
                                     {/* Social Icons */}
-                                    <div className="flex items-center gap-3 mt-4">
+                                    <div className="flex items-center gap-3 mt-3 sm:mt-4">
 
                                         {/* Facebook */}
                                         <a href="#" className="text-gray-500 hover:text-[#3faa00] transition-colors">
@@ -222,8 +238,8 @@ const PopularCandidates = () => {
                                     transition-colors
                                     text-white
                                     font-semibold
-                                    text-sm
-                                    py-4
+                                    text-xs sm:text-sm
+                                    py-3 sm:py-4
                                     text-center
                                 ">
                                     {candidate.salary}
@@ -240,10 +256,11 @@ const PopularCandidates = () => {
                         disabled={!canGoNext}
                         className={`
                             flex-shrink-0
-                            flex items-center gap-2
-                            text-white text-sm sm:text-base font-semibold
+                            flex items-center gap-1 sm:gap-2
+                            text-white text-xs sm:text-sm lg:text-base font-semibold
                             uppercase tracking-widest
                             transition-opacity duration-200
+                            whitespace-nowrap
                             ${canGoNext ? "opacity-100 hover:text-[#3faa00]" : "opacity-30 cursor-not-allowed"}
                         `}
                     >
